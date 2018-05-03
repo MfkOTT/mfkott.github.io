@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, Gruntjs, Nodejs, Reactjs, Vuejs"><title>github+hexo构建博客 - Hexo</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com"><span>Github</span></a></li><li><a href="https://www.v2ex.com/"><span>V2EX</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">github+hexo构建博客</h1><ul class="meta"><li><i class="icon icon-author"></i>ski</li><li><i class="icon icon-clock"></i>3 Minutes</li><li><i class="icon icon-calendar"></i>May 2, 2018</li></ul></div></div><div class="article-content" style="max-width:800px"><hr>
+<p>title: github+hexo构建博客<br>date: 2018-05-02 16:46:19</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>前一段时间在腾讯云上租了一台机器，就琢磨着搭建一个博客玩玩。找到了不少解决方案，一开始找了个开源的springboot博客系统，因为我是搞java的，熟门熟路，没没花多少工夫，就整了个springboot+nginx+mysql的博客，用了一段时间发现很不方便，更重要的是，自由度很低，想要加个功能得费不少功夫。后来又听说wordpress很高大上，由于个人对php只知皮毛，干脆就用docker构建镜像，一套操作下来，docker-wordpress+docker-mysql构建的博客出炉。开开心心玩了一段时间，但有个问题，因为穷，所以就只有一台最低配置的机器，加上我经常瞎整，时不时就把机器搞崩溃了，结果就是好不容易写了几篇心得，又得重来。痛定思痛，决心找一个能托管的资源的博客系统，顺着这个方向，终于找到了github+hexo这个神奇的东西。个人认为，这是我遇到的最好的解决方案。</p>
+<hr>
+<p>搭建过程中遇到了不少问题，特此记录下来，以后方便查看</p>
+<p>##创建项目<br><img src="https://www.skizhou.com/page/gitpages/createproject.png" alt="创建项目"><br><em>注意选中部分必须是你的github账号，否则无法访问，不区分大小写</em></p>
+<hr>
+<p>##准备环境<br>需要使用到git node.js和hexo</p>
+<hr>
+<p><strong>1. 安装git</strong><br>    <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a><br>    git是再熟悉不过的工具了，这里就不再赘述安装方法了，贴个官网下载地址，各种系统的都支持，安装完成之后<br>    &gt;使用 <code>git -version</code> 看看是否安装成功<br><img src="https://www.skizhou.com/page/gitpages/gitv.png" alt="查看git版本"></p>
+<hr>
+<p><strong>2. 安装node.js</strong><br>   <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载地址</a><br>   Hexo是基于nodeJS环境的静态博客,很多服务都需要使用npm,安装非常简单，同样安装完之后</p>
+<blockquote>
+<p>使用 <code>node -v</code> 看看是否安装成功<br>   <img src="https://www.skizhou.com/page/gitpages/nodev.png" alt="查看node.js版本"></p>
+</blockquote>
+<hr>
+<p><strong>3. 安装hexo</strong><br>hexo及后面涉及到的相关服务，都使用npm工具来安装，首先需要将github上面创建的项目clone到本地仓库。</p>
+<blockquote>
+<p>进入github，找到刚才创建的项目，复制项目地址<br> <img src="https://www.skizhou.com/page/gitpages/cloneproject.png" alt="查看node.js版本"></p>
+</blockquote>
+<hr>
+<pre><code>- 创建空文件夹如：**github-page** ,`cd`命令到该目录
+- `git init`初始化仓库
+- `git clone https://github.com/MfkOTT/mfkott.github.io.git` 克隆项目到仓库
+- 再创建放博客相关的空文件夹如：**blog** `cd`命令到该目录
+- 安装hexo `npm i -g hexo`
+</code></pre><p>安装完成后</p>
+<blockquote>
+<p>使用 <code>hexo -v</code> 看看是否安装成功<br>   <img src="https://www.skizhou.com/page/gitpages/hexov.png" alt="查看hexo版本"></p>
+<ul>
+<li>初始化hexo <code>hexo init</code> 初始化完成后，可以看见下面的目录结构<br><img src="https://www.skizhou.com/page/gitpages/structure.png" alt="hexo结构"></li>
+</ul>
+</blockquote>
+<ul>
+<li>目录介绍<br><strong>node_modules</strong>：是依赖包<br><strong>public</strong>：存放的是生成的页面<br><strong>scaffolds</strong>：命令生成文章等的模板<br><strong>source</strong>：用命令创建的各种文章<br><strong>themes</strong>：主题<br><strong>_config.yml</strong>：整个博客的配置<br><strong>db.json</strong>：source解析所得到的<br><strong>package.json</strong>：项目所需模块项目的配置信息<hr>
+##配置项目</li>
+<li>用编辑器打开_config.yml，找到deploy，进行如下配置<br><img src="https://www.skizhou.com/page/gitpages/config.png" alt="hexo配置"><br>  <em>repo即是你在github上创建的项目地址</em></li>
+<li>回到blog目录中，执行以下命令<br><code>hexo clean</code><br><code>hexo generate</code><br> <code>hexo server</code><br> <strong>注：hexo 3.0把服务器独立成个别模块，需要单独安装：<code>npm i hexo-server</code> 。</strong></li>
+<li>打开浏览器输入：<code>http://localhost:4000</code></li>
+<li>大功告成<br>##上传Github</li>
+<li>安装hexo-deployer-git服务，以便将写好的文章部署到github服务器上并让别人浏览<br><code>npm install hexo-deployer-git --save</code></li>
+<li>执行命令(建议每次都按照如下步骤部署)<br><code>hexo clean</code><br><code>hexo generate</code><br> <code>hexo deploy</code> </li>
+<li>在浏览器中输入<code>http://mfkott.github.io.github.io</code>就可以看到你的个人博客啦<code></code></li>
+</ul>
+</div><div class="article-meta" style="max-width:800px"></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cjgqcah000000alz2iyiydkew" data-title="github+hexo构建博客" data-url="http://yoursite.com/2018/05/02/github-hexo构建博客/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2018/05/02/hello-world/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/MfkOTT" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://weibo.com/heqibang" title="Weibo" target="_blank"><i class="icon icon-weibo"></i></a></li><li><a href="https://www.segmentfault.com/u/bon" title="SegmentFault" target="_blank"><i class="icon icon-segmentfault"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2018 Hexo<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small><small>, THEME BY <a href="https://github.com/BoizZ/hexo-theme-laughing" target="_blank">LAUGHING</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
