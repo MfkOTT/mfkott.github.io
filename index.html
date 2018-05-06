@@ -141,6 +141,8 @@
 
 
 
+<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -332,6 +334,26 @@
         
           
             
+        <div id="aplayer-cKgOpACU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-cKgOpACU"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "起风了",
+              author: "高桥优",
+              url: "https://www.skizhou.com/page/video/qfl.mp3",
+              pic: "https://xxx.com/1.jpg",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
           
         
       
