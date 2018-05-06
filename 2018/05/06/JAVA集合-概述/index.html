@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JAVA," />
 
 
 
@@ -79,14 +79,20 @@
 
 
 
+<meta name="description" content="Java集合介绍">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA集合-概述">
 <meta property="og:url" content="http://yoursite.com/2018/05/06/JAVA集合-概述/index.html">
-<meta property="og:site_name" content="ski">
+<meta property="og:site_name" content="Ski">
+<meta property="og:description" content="Java集合介绍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T06:19:06.100Z">
+<meta property="og:image" content="https://www.skizhou.com/page/gitpages/java/collection1.jpg">
+<meta property="og:updated_time" content="2018-05-06T07:05:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA集合-概述">
+<meta name="twitter:description" content="Java集合介绍">
+<meta name="twitter:image" content="https://www.skizhou.com/page/gitpages/java/collection1.jpg">
 
 
 
@@ -122,7 +128,7 @@
 
 
 
-  <title>JAVA集合-概述 | ski</title>
+  <title>JAVA集合-概述 | Ski</title>
   
 
 
@@ -162,7 +168,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">ski</span>
+        <span class="site-title">Ski</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -213,6 +219,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -268,7 +284,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ski">
+      <meta itemprop="name" content="Ski">
     </span>
 
     
@@ -298,6 +314,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -337,7 +375,46 @@
       
 
       
-        
+        <h2 id="Java集合介绍"><a href="#Java集合介绍" class="headerlink" title="Java集合介绍"></a>Java集合介绍</h2><p><img src="https://www.skizhou.com/page/gitpages/java/collection1.jpg" alt="集合结构"><br><a id="more"></a></p>
+<hr>
+<p>Java集合是java提供的工具包，包含了常用的数据结构：</p>
+<ul>
+<li>集合</li>
+<li>链表</li>
+<li>队列</li>
+<li>栈</li>
+<li>数组</li>
+<li>映射</li>
+</ul>
+<p>Java集合工具包位置是java.util.*<br>Java集合主要可以划分为4个部分：</p>
+<ul>
+<li>List列表</li>
+<li>Set集合</li>
+<li>Map映射</li>
+<li>工具类(Iterator迭代器、Enumeration枚举类、Arrays和Collections)</li>
+</ul>
+<hr>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><strong>1. Collection</strong> 是一个接口，是高度抽象出来的集合，它包含了集合的基本操作和属性。Collection包含了List和Set两大分支。</p>
+<ul>
+<li>List是一个有序的队列，每一个元素都有它的索引。第一个元素的索引值是0。List的实现类有LinkedList, ArrayList, Vector, Stack。</li>
+<li>Set是一个不允许有重复元素的集合。Set的实现类有HastSet和TreeSet。HashSet依赖于HashMap，它实际上是通过HashMap实现的；TreeSet依赖于TreeMap，它实际上是通过TreeMap实现的。</li>
+</ul>
+<hr>
+<p><strong>2. Map</strong> 是一个映射接口，即key-value键值对。Map中的每一个元素包含“一个key”和“key对应的value”。</p>
+<ul>
+<li>AbstractMap是个抽象类，它实现了Map接口中的大部分API。而HashMap，TreeMap，WeakHashMap都是继承于AbstractMap。</li>
+<li>Hashtable虽然继承于Dictionary，但它实现了Map接口。</li>
+</ul>
+<hr>
+<p><strong>3. Iterator</strong> 是遍历集合的工具，即我们通常通过Iterator迭代器来遍历集合。我们说Collection依赖于Iterator，是因为Collection的实现类都要实现iterator()函数，返回一个Iterator对象。</p>
+<blockquote>
+<p>ListIterator是专门为遍历List而存在的。</p>
+</blockquote>
+<hr>
+<p><strong>4. Enumeration</strong> 是JDK 1.0引入的抽象类。作用和Iterator一样，也是遍历集合；但是Enumeration的功能要比Iterator少。在上面的框图中，Enumeration只能在Hashtable, Vector, Stack中使用。</p>
+<hr>
+<p><strong>5. Arrays和Collections</strong> 它们是操作数组、集合的两个工具类。</p>
+
       
     </div>
     
@@ -351,6 +428,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
       
 
       
@@ -421,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -448,13 +540,22 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -487,6 +588,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java集合介绍"><span class="nav-number">1.</span> <span class="nav-text">Java集合介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
